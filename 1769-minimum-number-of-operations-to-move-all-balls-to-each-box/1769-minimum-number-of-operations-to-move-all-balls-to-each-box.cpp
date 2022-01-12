@@ -3,13 +3,18 @@ public:
     vector<int> minOperations(string boxes) {
         vector<int> answer;
         int count=0;
-        for (int i=0;i<boxes.size();i++)
+        int n=boxes.size();
+        int b=0;
+        for (int i=0;i<n;i++)
         {
-            for (int j=0;j<boxes.size();j++)
+            for (int j=0;j<n;j++)
             {
                 if (boxes.at(j)=='1')
                 { 
-                    count+=abs(j-i);
+                    b=j-i;
+                    if (b<0)
+                        b=b*-1;
+                    count+=b;
                 }
             }
             
