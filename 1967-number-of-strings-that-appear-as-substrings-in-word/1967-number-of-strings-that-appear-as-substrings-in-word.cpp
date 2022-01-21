@@ -2,9 +2,9 @@ class Solution {
 public:
     int numOfStrings(vector<string>& patterns, string word) {
         int c=0;
-        for (int i=0;i<patterns.size();i++)
+        for (auto a:patterns)
         {
-            if (word.find(patterns[i])!= -1)
+            if (word.find(a)!= -1)
                 c+=1;
         }
         return c;
