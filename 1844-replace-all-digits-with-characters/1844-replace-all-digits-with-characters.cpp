@@ -1,7 +1,7 @@
 class Solution {
 public:
     string replaceDigits(string s) {
-        for (int i=0;i<s.size();i++)
+        for (int i=1;i<s.size();i+=2)
         {
             if (s[i]>=48 && s[i]<=57)
             {
