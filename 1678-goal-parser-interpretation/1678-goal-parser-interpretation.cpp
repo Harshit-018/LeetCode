@@ -7,10 +7,15 @@ public:
             if (command.at(i)=='G')
                 ans+="G";
             if (command.at(i)=='(')
-                 if (command.at(i+1)==')')
+            {
+                if (command.at(i+1)==')')
                      ans+="o";
+            }
             if (command.at(i)=='a')
+            {
                 ans+="al";
+                i+=2;
+            }
         }
         return ans;
     }
