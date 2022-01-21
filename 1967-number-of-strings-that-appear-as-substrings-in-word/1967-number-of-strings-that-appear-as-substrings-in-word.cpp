@@ -4,7 +4,7 @@ public:
         int c=0;
         for (int i=0;i<patterns.size();i++)
         {
-            if (word.find(patterns[i])!= std::string::npos)
+            if (word.find(patterns[i])!= -1)
                 c+=1;
         }
         return c;
