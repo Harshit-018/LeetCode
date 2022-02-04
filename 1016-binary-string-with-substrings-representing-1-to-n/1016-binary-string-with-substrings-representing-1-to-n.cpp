@@ -17,7 +17,7 @@ public:
         for (int i=1;i<=n;i++)
         {
             string temp=dectobin(i);
-            if(s.find(temp)== string::npos)
+            if(s.find(temp)== -1)
                 return false;
         }
         return true;
