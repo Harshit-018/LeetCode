@@ -1,21 +1,17 @@
 class Solution {
 public:
     bool areNumbersAscending(string s) {
-        int prev=-1;
-        s.push_back(' ');
-        string num;
-        for (int i=0;i<s.size();i++)
-        {
-            if(isdigit(s[i]))
-                num+=s[i];
-            else if(s[i]==' '&& isdigit(s[i-1]))
-            {
-                if(stoi(num)<=prev)
-                    return false;
-                prev=stoi(num);
-                num="";
-            }
+    int prev = 0, cur = 0;
+    for (auto ch : s) {
+        if (isdigit(ch))
+            cur = cur * 10 + (ch - '0');
+        else if (cur != 0) {
+            if (prev >= cur)
+                return false;
+            prev = cur;
+            cur = 0;
         }
-        return true;
     }
+    return cur == 0 || prev < cur;
+}
 };
