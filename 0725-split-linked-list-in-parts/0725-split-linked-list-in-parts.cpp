@@ -13,15 +13,16 @@ public:
     vector<ListNode*> splitListToParts(ListNode* head, int k) {
         ListNode* curr=head;
         int l=0;
-        while(head){
+        while(curr){
             l++;
-            head=head->next;
+            curr=curr->next;
         }
         
         int bucketSlot = l/k;
         int extraElement = l%k;
         
         ListNode* prev=NULL;
+        curr= head;
         
         vector<ListNode*> result(k,NULL);
         
@@ -34,6 +35,7 @@ public:
             }
             prev->next=NULL;
             extraElement--;
+            
         }
         
         return result;
