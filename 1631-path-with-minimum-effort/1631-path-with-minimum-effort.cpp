@@ -21,6 +21,9 @@ public:
             int x = node.first;
             int y = node.second;
             
+            if(x == m-1 && y == n-1)
+                return diff;
+            
             for(auto dir : dirs){
                 int nx = x + dir[0];
                 int ny = y + dir[1];
