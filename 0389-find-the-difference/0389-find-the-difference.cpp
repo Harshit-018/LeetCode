@@ -1,15 +1,19 @@
 class Solution {
 public:
     char findTheDifference(string s, string t) {
-        int sum=0;
+        unordered_map<char, int> mp;
         
-        for(char ch:t){
-            sum+=ch;
+        for(char &ch : s) {
+            mp[ch]++;
         }
-        for(char ch:s){
-            sum-=ch;
+        
+        for(char &ch : t) {
+            mp[ch]--;
+            
+            if(mp[ch] < 0)
+                return ch;
         }
-        return (char)sum;
+        
+        return 'a'; //send any random. It will never reach here
     }
 };
-
