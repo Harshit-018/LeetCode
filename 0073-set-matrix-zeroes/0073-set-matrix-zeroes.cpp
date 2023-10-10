@@ -1,32 +1,35 @@
 class Solution {
 public:
-    void markRow(int i,int m, vector<vector<int>>& matrix){
-        for(int r=0; r<m; r++){
-            if(matrix[i][r]!=0) matrix[i][r]=-1e9;
-        }
-    }
-    void markCol(int j,int n, vector<vector<int>>& matrix){
-        for(int c=0; c<n; c++){
-            if(matrix[c][j]!=0) matrix[c][j]=-1e9;
-        }
-    }
     void setZeroes(vector<vector<int>>& matrix) {
         int n = matrix.size();
         int m = matrix[0].size();
-        for(int i=0;i<n;i++){
-            for(int j=0;j<m;j++){
-                if(matrix[i][j]==0){
-                    markRow(i,m, matrix);
-                    markCol(j,n, matrix);
+        int col0 = 1;
+        for(int i=0; i<n; i++){
+            for(int j=0; j<m; j++){
+                if(matrix[i][j] == 0){
+                    matrix[i][0] = 0;
+                    
+                    if(j!=0) matrix[0][j] = 0;
+                    else col0 = 0;
                 }
             }
         }
-        for(int i=0;i<n;i++){
-            for(int j=0;j<m;j++){
-                if(matrix[i][j]==-1e9){
-                    matrix[i][j]=0;
+        
+        for(int i=1; i<n; i++){
+            for(int j=1; j<m; j++){
+                if(matrix[i][j] != 0){
+                    if(matrix[i][0] == 0 || matrix[0][j] == 0){
+                        matrix[i][j] = 0;
+                    }
                 }
             }
+        }
+        
+        if(matrix[0][0] == 0){
+            for(int j=0; j<m; j++) matrix[0][j]=0;
+        }
+        if(col0 == 0){
+            for(int i=0; i<n; i++) matrix[i][0]=0;
         }
     }
 };
