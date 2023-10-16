@@ -1,14 +1,19 @@
 class Solution {
 public:
     vector<int> getRow(int rowIndex) {
-        vector<vector<int>> ans(rowIndex+1);
-        
-        for(int i=0; i<rowIndex+1; i++){
-            ans[i] = vector<int>(i+1,1);
-            for(int j=1; j<i; j++){
-                ans[i][j] = ans[i-1][j-1] + ans[i-1][j];
-            }
+        if(rowIndex==0){
+            return {1};
+        }   
+        if(rowIndex==1){
+            return {1,1};
         }
-        return ans[rowIndex];
+        vector<int> prevRow=getRow(rowIndex-1);
+        vector<int> row;
+        row.push_back(1);
+        for(int i=1;i<prevRow.size();i++){
+            row.push_back(prevRow[i-1]+prevRow[i]);
+        }
+        row.push_back(1);
+        return row;
     }
 };
