@@ -16,6 +16,7 @@ public:
             (st.empty()) ? ans[i] = 0 : ans[i] = span;
             st.push({temperatures[i],span});
         }
+        
         return ans;
     }
 };
