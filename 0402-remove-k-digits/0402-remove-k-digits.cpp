@@ -13,7 +13,7 @@ public:
                 res.push_back(num[i]);
         }
         
-        while(res.length() && k>0){
+        while(res.length()>0 && k>0){
             res.pop_back();
             k--;
         }
